@@ -160,6 +160,7 @@ void execute(chip8 *chip, unsigned char *instr, unsigned short *opcode){
         //add constant
         case 0x7:
             chip->V[X] += NN;
+            break;
         
         case 0x8:
             switch(N){
@@ -218,7 +219,7 @@ void execute(chip8 *chip, unsigned char *instr, unsigned short *opcode){
                     break;
 
                 default:
-                    printf("Unknown opcode arith %i\n",(int) N);
+                    printf("Unknown opcode arith %x\n",(int) N);
                     exit(1);
             }
             break;
