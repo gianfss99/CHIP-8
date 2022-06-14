@@ -44,8 +44,8 @@ void init(chip8 *chip){
     memset(chip->V,0,sizeof(chip->V));
 
     chip->I = 0;
-    chip->delay = 60;
-    chip->sound = 60;
+    chip->delay = 0;
+    chip->sound = 0;
     chip->PC = 0x200;
     chip->stack_pointer = 0;
 
@@ -299,7 +299,7 @@ void pipeline(chip8 *chip){
         *opcode = 0x0;
         fetch(chip, instr, opcode);
         execute(chip, instr, opcode);
-        break;
+        
     }
 }
 
