@@ -273,6 +273,7 @@ void execute(chip8 *chip, unsigned char *instr, unsigned short *opcode){
         printf("BEEP\n");
         --chip->sound;
     }
+    
     sleep(0.016667);
 }
 
@@ -301,7 +302,12 @@ void pipeline(chip8 *chip){
         fetch(chip, instr, opcode);
         execute(chip, instr, opcode);
         
+        if (SDL_PollEvent(&event) && event.type == SDL_QUIT)
+            break;
     }
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
 }
 
 int main(int argc, char* argv[]){
@@ -315,13 +321,7 @@ int main(int argc, char* argv[]){
 
     pipeline(&chip);
 
-    while (1) {
-        if (SDL_PollEvent(&event) && event.type == SDL_QUIT)
-            break;
-    }
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
-    SDL_Quit();
-    return EXIT_SUCCESS;
+    
+    
     
 }
