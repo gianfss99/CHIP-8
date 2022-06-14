@@ -284,6 +284,7 @@ void draw(unsigned char display[HEIGHT][WIDTH]){
             SDL_RenderDrawPoint(renderer, j, i);
         }
     }
+    SDL_RenderPresent(renderer);
 }
 
 
