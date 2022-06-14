@@ -314,5 +314,13 @@ int main(int argc, char* argv[]){
 
     pipeline(&chip);
 
+    while (1) {
+        if (SDL_PollEvent(&event) && event.type == SDL_QUIT)
+            break;
+    }
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+    return EXIT_SUCCESS;
     
 }
