@@ -99,6 +99,7 @@ void execute(chip8 *chip, unsigned char *instr, unsigned short *opcode){
                 //clear screen
                 case 0x0E0:
                     memset(chip->display,0,sizeof(chip->display));
+                    draw(chip->display);
                     break;
                 //return from subroutine
                 case 0x0EE:
@@ -263,8 +264,6 @@ void execute(chip8 *chip, unsigned char *instr, unsigned short *opcode){
 
         default:
             printf("Unknown opcode %i\n",(int)*instr);
-            exit(1);
-
 
     }
     if(chip->delay>0)
